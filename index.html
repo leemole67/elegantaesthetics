@@ -3,1431 +3,334 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Elegant Aesthetics - Premium Beauty & Wellness</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            .datetime-selection {
-                grid-template-columns: 1fr;
-                gap: 1rem;
-            }
-
-            .service-selection {
-                grid-template-columns: 1fr;
-            }
-
-            .booking-buttons {
-                flex-direction: column;
-            }
-
-            .booking-content {
-                margin: 1rem;
-                padding: 1.5rem;
-            }
-        }
-
-        body {
-            font-family: 'Georgia', serif;
-            line-height: 1.6;
-            color: #333;
-            background-color: #fdfcfc;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        /* Header */
-        header {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            position: fixed;
-            top: 0;
-            width: 100%;
-            z-index: 1000;
-            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
-        }
-
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem 0;
-        }
-
-        .logo {
-            font-size: 1.8rem;
-            font-weight: bold;
-            color: #8b7355;
-            letter-spacing: 1px;
-        }
-
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: #333;
-            font-size: 0.95rem;
-            font-weight: 500;
-            transition: color 0.3s ease;
-            letter-spacing: 0.5px;
-        }
-
-        .nav-links a:hover {
-            color: #8b7355;
-        }
-
-        .book-btn {
-            background: #8b7355;
-            color: white;
-            padding: 12px 24px;
-            border: none;
-            border-radius: 30px;
-            cursor: pointer;
-            font-size: 0.9rem;
-            font-weight: 500;
-            letter-spacing: 0.5px;
-            transition: all 0.3s ease;
-        }
-
-        .book-btn:hover {
-            background: #6d5a42;
-            transform: translateY(-2px);
-        }
-
-        /* Hero Section */
-        .hero {
-            height: 100vh;
-            background: linear-gradient(rgba(139, 115, 85, 0.3), rgba(139, 115, 85, 0.3)), url('/api/placeholder/1200/800');
-            background-size: cover;
-            background-position: center;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            color: white;
-        }
-
-        .hero-content h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
-            font-weight: 300;
-            letter-spacing: 2px;
-        }
-
-        .hero-content p {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-            max-width: 600px;
-            letter-spacing: 1px;
-        }
-
-        .cta-btn {
-            background: transparent;
-            color: white;
-            border: 2px solid white;
-            padding: 15px 35px;
-            border-radius: 30px;
-            cursor: pointer;
-            font-size: 1rem;
-            font-weight: 500;
-            letter-spacing: 1px;
-            transition: all 0.3s ease;
-        }
-
-        .cta-btn:hover {
-            background: white;
-            color: #8b7355;
-        }
-
-        /* About Section */
-        .about {
-            padding: 100px 0;
-            background: #f9f7f4;
-        }
-
-        .about-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
-        }
-
-        .about-text h2 {
-            font-size: 2.5rem;
-            color: #8b7355;
-            margin-bottom: 1.5rem;
-            font-weight: 300;
-            letter-spacing: 1px;
-        }
-
-        .about-text p {
-            font-size: 1.1rem;
-            margin-bottom: 1.5rem;
-            color: #666;
-            line-height: 1.8;
-        }
-
-        .about-image {
-            text-align: center;
-        }
-
-        .about-image img {
-            width: 100%;
-            max-width: 400px;
-            border-radius: 10px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-        }
-
-        /* Services Section */
-        .services {
-            padding: 100px 0;
-            background: white;
-        }
-
-        .services h2 {
-            text-align: center;
-            font-size: 2.5rem;
-            color: #8b7355;
-            margin-bottom: 3rem;
-            font-weight: 300;
-            letter-spacing: 1px;
-        }
-
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-
-        .service-card {
-            background: #f9f7f4;
-            padding: 2.5rem;
-            border-radius: 15px;
-            text-align: center;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .service-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-        }
-
-        .service-card img {
-            width: 80px;
-            height: 80px;
-            margin-bottom: 1.5rem;
-            border-radius: 50%;
-        }
-
-        .service-card h3 {
-            font-size: 1.5rem;
-            color: #8b7355;
-            margin-bottom: 1rem;
-            font-weight: 400;
-        }
-
-        .service-card p {
-            color: #666;
-            line-height: 1.6;
-        }
-
-        /* Treatment Details */
-        .treatments {
-            padding: 100px 0;
-            background: white;
-        }
-
-        .treatments h2 {
-            text-align: center;
-            font-size: 2.5rem;
-            color: #8b7355;
-            margin-bottom: 3rem;
-            font-weight: 300;
-            letter-spacing: 1px;
-        }
-
-        .treatment-item {
-            margin-bottom: 4rem;
-            border-bottom: 1px solid #e5e5e5;
-            padding-bottom: 3rem;
-        }
-
-        .treatment-item:last-child {
-            border-bottom: none;
-            margin-bottom: 0;
-            padding-bottom: 0;
-        }
-
-        .treatment-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            align-items: center;
-        }
-
-        .treatment-content:nth-child(even) {
-            direction: rtl;
-        }
-
-        .treatment-content:nth-child(even) > * {
-            direction: ltr;
-        }
-
-        .treatment-info h3 {
-            font-size: 2rem;
-            color: #8b7355;
-            margin-bottom: 1rem;
-            font-weight: 400;
-        }
-
-        .treatment-info p {
-            font-size: 1.1rem;
-            color: #666;
-            line-height: 1.8;
-            margin-bottom: 1.5rem;
-        }
-
-        .treatment-benefits {
-            margin: 1.5rem 0;
-        }
-
-        .treatment-benefits h4 {
-            color: #8b7355;
-            margin-bottom: 0.5rem;
-            font-size: 1.1rem;
-        }
-
-        .benefit-list {
-            list-style: none;
-            padding-left: 0;
-        }
-
-        .benefit-list li {
-            color: #666;
-            margin-bottom: 0.3rem;
-            position: relative;
-            padding-left: 1.5rem;
-        }
-
-        .benefit-list li:before {
-            content: "✓";
-            color: #8b7355;
-            font-weight: bold;
-            position: absolute;
-            left: 0;
-        }
-
-        .treatment-pricing {
-            background: #f9f7f4;
-            padding: 1.5rem;
-            border-radius: 10px;
-            margin-top: 1.5rem;
-        }
-
-        .treatment-pricing h4 {
-            color: #8b7355;
-            margin-bottom: 0.5rem;
-        }
-
-        .price-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 0.5rem;
-            color: #666;
-        }
-
-        .price {
-            font-weight: 600;
-            color: #8b7355;
-        }
-
-        .treatment-image {
-            text-align: center;
-        }
-
-        .treatment-image img {
-            width: 100%;
-            max-width: 400px;
-            border-radius: 15px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
-        }
-
-        .book-treatment-btn {
-            background: #8b7355;
-            color: white;
-            padding: 12px 24px;
-            border: none;
-            border-radius: 25px;
-            cursor: pointer;
-            font-size: 0.95rem;
-            font-weight: 500;
-            letter-spacing: 0.5px;
-            transition: all 0.3s ease;
-            margin-top: 1rem;
-        }
-
-        .book-treatment-btn:hover {
-            background: #6d5a42;
-            transform: translateY(-2px);
-        }
-
-        /* Booking Modal */
-        .booking-modal {
-            display: none;
-            position: fixed;
-            z-index: 2000;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0,0,0,0.5);
-            backdrop-filter: blur(5px);
-        }
-
-        .booking-modal.active {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .booking-content {
-            background-color: white;
-            margin: 2rem;
-            padding: 2rem;
-            border-radius: 20px;
-            width: 90%;
-            max-width: 600px;
-            max-height: 90vh;
-            overflow-y: auto;
-            position: relative;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-        }
-
-        .booking-close {
-            position: absolute;
-            right: 1.5rem;
-            top: 1rem;
-            font-size: 2rem;
-            cursor: pointer;
-            color: #8b7355;
-            transition: color 0.3s ease;
-        }
-
-        .booking-close:hover {
-            color: #6d5a42;
-        }
-
-        .booking-header {
-            text-align: center;
-            margin-bottom: 2rem;
-        }
-
-        .booking-header h2 {
-            color: #8b7355;
-            font-size: 2rem;
-            margin-bottom: 0.5rem;
-            font-weight: 300;
-        }
-
-        .booking-header p {
-            color: #666;
-            font-size: 1rem;
-        }
-
-        .booking-steps {
-            display: flex;
-            justify-content: center;
-            margin-bottom: 2rem;
-            gap: 1rem;
-        }
-
-        .step {
-            width: 30px;
-            height: 30px;
-            border-radius: 50%;
-            background: #e5e5e5;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            color: #666;
-            transition: all 0.3s ease;
-        }
-
-        .step.active {
-            background: #8b7355;
-            color: white;
-        }
-
-        .step.completed {
-            background: #6d5a42;
-            color: white;
-        }
-
-        .booking-step {
-            display: none;
-        }
-
-        .booking-step.active {
-            display: block;
-        }
-
-        .service-selection {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .service-option {
-            border: 2px solid #e5e5e5;
-            border-radius: 10px;
-            padding: 1.5rem;
-            text-align: center;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .service-option:hover {
-            border-color: #8b7355;
-            transform: translateY(-2px);
-        }
-
-        .service-option.selected {
-            border-color: #8b7355;
-            background: #f9f7f4;
-        }
-
-        .service-option h4 {
-            color: #8b7355;
-            margin-bottom: 0.5rem;
-        }
-
-        .service-option .price {
-            font-weight: bold;
-            color: #8b7355;
-            font-size: 1.1rem;
-        }
-
-        .datetime-selection {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .date-picker, .time-picker {
-            background: #f9f7f4;
-            padding: 1.5rem;
-            border-radius: 10px;
-        }
-
-        .date-picker h4, .time-picker h4 {
-            color: #8b7355;
-            margin-bottom: 1rem;
-            text-align: center;
-        }
-
-        .calendar {
-            display: grid;
-            grid-template-columns: repeat(7, 1fr);
-            gap: 0.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .calendar-day {
-            padding: 0.5rem;
-            text-align: center;
-            border: 1px solid #e5e5e5;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            border-radius: 5px;
-        }
-
-        .calendar-day:hover {
-            background: #8b7355;
-            color: white;
-        }
-
-        .calendar-day.selected {
-            background: #8b7355;
-            color: white;
-        }
-
-        .calendar-day.disabled {
-            color: #ccc;
-            cursor: not-allowed;
-        }
-
-        .calendar-day.disabled:hover {
-            background: transparent;
-            color: #ccc;
-        }
-
-        .time-slots {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 0.5rem;
-        }
-
-        .time-slot {
-            padding: 0.8rem;
-            text-align: center;
-            border: 1px solid #e5e5e5;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            border-radius: 5px;
-            font-size: 0.9rem;
-        }
-
-        .time-slot:hover {
-            background: #8b7355;
-            color: white;
-        }
-
-        .time-slot.selected {
-            background: #8b7355;
-            color: white;
-        }
-
-        .time-slot.unavailable {
-            background: #f5f5f5;
-            color: #ccc;
-            cursor: not-allowed;
-        }
-
-        .booking-form .form-group {
-            margin-bottom: 1.5rem;
-        }
-
-        .booking-form .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            color: #8b7355;
-            font-weight: 500;
-        }
-
-        .booking-form .form-group input,
-        .booking-form .form-group select,
-        .booking-form .form-group textarea {
-            width: 100%;
-            padding: 12px;
-            border: 2px solid #e5e5e5;
-            border-radius: 8px;
-            font-size: 1rem;
-            transition: border-color 0.3s ease;
-        }
-
-        .booking-form .form-group input:focus,
-        .booking-form .form-group select:focus,
-        .booking-form .form-group textarea:focus {
-            outline: none;
-            border-color: #8b7355;
-        }
-
-        .booking-summary {
-            background: #f9f7f4;
-            padding: 1.5rem;
-            border-radius: 10px;
-            margin-bottom: 1.5rem;
-        }
-
-        .booking-summary h4 {
-            color: #8b7355;
-            margin-bottom: 1rem;
-        }
-
-        .summary-item {
-            display: flex;
-            justify-content: between;
-            margin-bottom: 0.5rem;
-            color: #666;
-        }
-
-        .summary-item strong {
-            color: #8b7355;
-        }
-
-        .booking-buttons {
-            display: flex;
-            gap: 1rem;
-            justify-content: space-between;
-            margin-top: 2rem;
-        }
-
-        .btn-secondary {
-            background: transparent;
-            color: #8b7355;
-            border: 2px solid #8b7355;
-            padding: 12px 24px;
-            border-radius: 25px;
-            cursor: pointer;
-            font-size: 1rem;
-            font-weight: 500;
-            transition: all 0.3s ease;
-        }
-
-        .btn-secondary:hover {
-            background: #8b7355;
-            color: white;
-        }
-
-        .btn-primary {
-            background: #8b7355;
-            color: white;
-            border: none;
-            padding: 12px 24px;
-            border-radius: 25px;
-            cursor: pointer;
-            font-size: 1rem;
-            font-weight: 500;
-            transition: all 0.3s ease;
-        }
-
-        .btn-primary:hover {
-            background: #6d5a42;
-            transform: translateY(-2px);
-        }
-
-        .btn-primary:disabled {
-            background: #ccc;
-            cursor: not-allowed;
-            transform: none;
-        }
-
-        /* Testimonials */
-        .testimonials {
-            padding: 100px 0;
-            background: #8b7355;
-            color: white;
-            text-align: center;
-        }
-
-        .testimonials h2 {
-            font-size: 2.5rem;
-            margin-bottom: 3rem;
-            font-weight: 300;
-            letter-spacing: 1px;
-        }
-
-        .testimonial-card {
-            max-width: 600px;
-            margin: 0 auto;
-            padding: 2rem;
-        }
-
-        .testimonial-card p {
-            font-size: 1.2rem;
-            font-style: italic;
-            margin-bottom: 1.5rem;
-            line-height: 1.8;
-        }
-
-        .testimonial-author {
-            font-weight: 500;
-            letter-spacing: 1px;
-        }
-
-        /* Contact Section */
-        .contact {
-            padding: 100px 0;
-            background: #f9f7f4;
-        }
-
-        .contact-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-        }
-
-        .contact-info h2 {
-            font-size: 2.5rem;
-            color: #8b7355;
-            margin-bottom: 2rem;
-            font-weight: 300;
-            letter-spacing: 1px;
-        }
-
-        .contact-info p {
-            font-size: 1.1rem;
-            margin-bottom: 1rem;
-            color: #666;
-        }
-
-        .contact-form {
-            background: white;
-            padding: 2.5rem;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-        }
-
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            color: #8b7355;
-            font-weight: 500;
-        }
-
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            padding: 12px;
-            border: 2px solid #e5e5e5;
-            border-radius: 8px;
-            font-size: 1rem;
-            transition: border-color 0.3s ease;
-        }
-
-        .form-group input:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: #8b7355;
-        }
-
-        .form-group textarea {
-            height: 120px;
-            resize: vertical;
-        }
-
-        .submit-btn {
-            background: #8b7355;
-            color: white;
-            padding: 15px 30px;
-            border: none;
-            border-radius: 30px;
-            cursor: pointer;
-            font-size: 1rem;
-            font-weight: 500;
-            letter-spacing: 0.5px;
-            transition: all 0.3s ease;
-            width: 100%;
-        }
-
-        .submit-btn:hover {
-            background: #6d5a42;
-            transform: translateY(-2px);
-        }
-
-        /* Footer */
-        footer {
-            background: #333;
-            color: white;
-            text-align: center;
-            padding: 2rem 0;
-        }
-
-        footer p {
-            margin-bottom: 1rem;
-        }
-
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-        }
-
-        .social-links a {
-            color: white;
-            text-decoration: none;
-            font-size: 1.2rem;
-            transition: color 0.3s ease;
-        }
-
-        .social-links a:hover {
-            color: #8b7355;
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-
-            .hero-content h1 {
-                font-size: 2.5rem;
-            }
-
-            .about-content,
-            .contact-content,
-            .treatment-content {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-
-            .treatment-content:nth-child(even) {
-                direction: ltr;
-            }
-
-            .services-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .treatment-item {
-                margin-bottom: 3rem;
-                padding-bottom: 2rem;
-            }
-        }
-    </style>
+    <title>Elegant Aesthetics - Premium Beauty Treatments</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 </head>
 <body>
-    <!-- Header -->
-    <header>
-        <nav class="container">
-            <div class="logo">Elegant Aesthetics</div>
-            <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#treatments">Treatments</a></li>
-                <li><a href="#contact">Contact</a></li>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <h2>Elegant Aesthetics</h2>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item"><a href="#home" class="nav-link">Home</a></li>
+                <li class="nav-item"><a href="#about" class="nav-link">About</a></li>
+                <li class="nav-item"><a href="#Treatments" class="nav-link">Treatments</a></li>
+                <li class="nav-item"><a href="#gallery" class="nav-link">Gallery</a></li>
+                <li class="nav-item"><a href="#contact" class="nav-link">Contact</a></li>
             </ul>
-            <button class="book-btn">Book Appointment</button>
-        </nav>
-    </header>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
 
     <!-- Hero Section -->
-    <section class="hero" id="home">
+    <section id="home" class="hero">
         <div class="hero-content">
-            <h1>Elegant Aesthetics</h1>
-            <p>Where beauty meets wellness. Experience premium aesthetic treatments in a luxurious, serene environment designed to rejuvenate your body and soul.</p>
-            <button class="cta-btn">Discover Your Beauty</button>
+            <h1 class="hero-title">Transform Your Beauty</h1>
+            <p class="hero-subtitle">Experience premium aesthetic treatments in our luxurious clinic</p>
+            <div class="hero-buttons">
+                <a href="#contact" class="btn btn-primary">Book Consultation</a>
+                <a href="#Treatments" class="btn btn-secondary">View Treatments</a>
+            </div>
+        </div>
+        <div class="hero-image">
+            <div class="hero-placeholder">
+                <i class="fas fa-spa"></i>
+            </div>
         </div>
     </section>
 
     <!-- About Section -->
-    <section class="about" id="about">
+    <section id="about" class="about">
         <div class="container">
+            <div class="section-header">
+                <h2>About Elegant Aesthetics</h2>
+                <p>Your premier destination for advanced beauty treatments</p>
+            </div>
             <div class="about-content">
                 <div class="about-text">
-                    <h2>Your Journey to Beauty</h2>
-                    <p>At Elegant Aesthetics, we believe that true beauty radiates from within. Our experienced team of aesthetic professionals is dedicated to enhancing your natural beauty through personalized treatments and cutting-edge techniques.</p>
-                    <p>With years of expertise in the aesthetic industry, we provide a comprehensive range of services designed to help you look and feel your absolute best. Our commitment to excellence and attention to detail ensures that every client receives the highest standard of care.</p>
-                    <p>Step into our tranquil sanctuary and embark on a transformative journey towards confidence and radiance.</p>
+                    <h3>Excellence in Aesthetic Care</h3>
+                    <p>At Elegant Aesthetics, we combine cutting-edge technology with personalized care to deliver exceptional results. Our team of qualified professionals is dedicated to helping you achieve your beauty goals in a safe, comfortable environment.</p>
+                    <div class="about-features">
+                        <div class="feature">
+                            <i class="fas fa-certificate"></i>
+                            <div>
+                                <h4>Certified Professionals</h4>
+                                <p>Fully qualified and experienced practitioners</p>
+                            </div>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-star"></i>
+                            <div>
+                                <h4>Premium Quality</h4>
+                                <p>Latest technology and highest standards</p>
+                            </div>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-heart"></i>
+                            <div>
+                                <h4>Personalized Care</h4>
+                                <p>Tailored treatments for individual needs</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div class="about-image">
-                    <img src="/api/placeholder/400/500" alt="Elegant Aesthetics Salon Interior">
+                    <div class="about-placeholder">
+                        <i class="fas fa-user-md"></i>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Services Section -->
-    <section class="services" id="services">
+    <!-- Treatments Section -->
+    <section id="Treatments" class="Treatments">
         <div class="container">
-            <h2>Our Premium Services</h2>
-            <div class="services-grid">
+            <div class="section-header">
+                <h2>Our Treatments</h2>
+                <p>Comprehensive beauty treatments tailored to your needs</p>
+            </div>
+            <div class="Treatments-grid">
                 <div class="service-card">
-                    <img src="/api/placeholder/80/80" alt="Facial Treatments">
-                    <h3>Facial Treatments</h3>
-                    <p>Rejuvenating facials customized to your skin type, including hydrafacials, chemical peels, and anti-aging treatments for a radiant complexion.</p>
+                    <div class="service-icon">
+                        <i class="fas fa-magic"></i>
+                    </div>
+                    <h3>Anti-Wrinkle Treatments</h3>
+                    <p>Reduce fine lines and wrinkles with our advanced anti-aging treatments using premium products.</p>
+                    <ul>
+                        <li>Botox injections</li>
+                        <li>Dermal fillers</li>
+                        <li>Skin rejuvenation</li>
+                    </ul>
                 </div>
                 <div class="service-card">
-                    <img src="/api/placeholder/80/80" alt="Injectables">
-                    <h3>Injectable Treatments</h3>
-                    <p>Professional Botox and dermal filler treatments to smooth wrinkles and restore volume for a naturally youthful appearance.</p>
+                    <div class="service-icon">
+                        <i class="fas fa-cut"></i>
+                    </div>
+                    <h3>Laser Hair Removal</h3>
+                    <p>Permanent hair reduction using state-of-the-art laser technology for smooth, hair-free skin.</p>
+                    <ul>
+                        <li>All skin types</li>
+                        <li>Pain-free treatment</li>
+                        <li>Long-lasting results</li>
+                    </ul>
                 </div>
                 <div class="service-card">
-                    <img src="/api/placeholder/80/80" alt="Body Contouring">
+                    <div class="service-icon">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <h3>Skin Rejuvenation</h3>
+                    <p>Restore your skin's natural glow with our range of facial treatments and peels.</p>
+                    <ul>
+                        <li>Chemical peels</li>
+                        <li>Microneedling</li>
+                        <li>Hydrafacial</li>
+                    </ul>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-fire"></i>
+                    </div>
                     <h3>Body Contouring</h3>
-                    <p>Advanced non-invasive body sculpting treatments to help you achieve your desired silhouette and boost your confidence.</p>
+                    <p>Sculpt and shape your body with our non-invasive body contouring treatments.</p>
+                    <ul>
+                        <li>Fat reduction</li>
+                        <li>Skin tightening</li>
+                        <li>Cellulite treatment</li>
+                    </ul>
                 </div>
                 <div class="service-card">
-                    <img src="/api/placeholder/80/80" alt="Laser Treatments">
-                    <h3>Laser Treatments</h3>
-                    <p>State-of-the-art laser therapies for hair removal, skin resurfacing, and pigmentation correction with minimal downtime.</p>
+                    <div class="service-icon">
+                        <i class="fas fa-eye"></i>
+                    </div>
+                    <h3>Lip & Eye Enhancement</h3>
+                    <p>Enhance your natural features with our specialized lip and eye treatments.</p>
+                    <ul>
+                        <li>Lip fillers</li>
+                        <li>Eye bag treatment</li>
+                        <li>Brow enhancement</li>
+                    </ul>
                 </div>
                 <div class="service-card">
-                    <img src="/api/placeholder/80/80" alt="Wellness Therapy">
-                    <h3>Wellness Therapy</h3>
-                    <p>Holistic wellness treatments including LED light therapy and relaxation therapies to promote overall well-being.</p>
-                </div>
-                <div class="service-card">
-                    <img src="/api/placeholder/80/80" alt="Skincare Consultation">
-                    <h3>Skincare Consultation</h3>
-                    <p>Personalized skincare analysis and professional product recommendations to maintain your results at home.</p>
+                    <div class="service-icon">
+                        <i class="fas fa-spa"></i>
+                    </div>
+                    <h3>Wellness Treatments</h3>
+                    <p>Relax and rejuvenate with our range of wellness and relaxation treatments.</p>
+                    <ul>
+                        <li>Vitamin injections</li>
+                        <li>IV therapy</li>
+                        <li>Wellness consultation</li>
+                    </ul>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Detailed Treatments Section -->
-    <section class="treatments" id="treatments">
+    <!-- Gallery Section -->
+    <section id="gallery" class="gallery">
         <div class="container">
-            <h2>Our Signature Treatments</h2>
-            
-            <!-- Facial Treatments -->
-            <div class="treatment-item">
-                <div class="treatment-content">
-                    <div class="treatment-info">
-                        <h3>Advanced Facial Treatments</h3>
-                        <p>Our comprehensive facial treatments are designed to address your unique skin concerns and restore your natural radiance. Using the latest technology and premium skincare products, we provide personalized treatments that deliver visible results.</p>
-                        
-                        <div class="treatment-benefits">
-                            <h4>Treatment Benefits:</h4>
-                            <ul class="benefit-list">
-                                <li>Deep cleansing and exfoliation</li>
-                                <li>Improved skin texture and tone</li>
-                                <li>Reduced fine lines and wrinkles</li>
-                                <li>Enhanced hydration and glow</li>
-                                <li>Customized to your skin type</li>
-                            </ul>
-                        </div>
-
-                        <div class="treatment-pricing">
-                            <h4>Treatment Options & Pricing:</h4>
-                            <div class="price-item">
-                                <span>Classic European Facial</span>
-                                <span class="price">$120</span>
-                            </div>
-                            <div class="price-item">
-                                <span>HydraFacial MD</span>
-                                <span class="price">$200</span>
-                            </div>
-                            <div class="price-item">
-                                <span>Chemical Peel Treatment</span>
-                                <span class="price">$150</span>
-                            </div>
-                            <div class="price-item">
-                                <span>Anti-Aging Facial</span>
-                                <span class="price">$180</span>
-                            </div>
-                        </div>
-                        
-                        <button class="book-treatment-btn">Book Facial Treatment</button>
-                    </div>
-                    <div class="treatment-image">
-                        <img src="/api/placeholder/400/300" alt="Facial Treatment">
+            <div class="section-header">
+                <h2>Treatment Gallery</h2>
+                <p>See the amazing results from our treatments</p>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <div class="gallery-placeholder">
+                        <i class="fas fa-image"></i>
+                        <p>Before & After</p>
                     </div>
                 </div>
-            </div>
-
-            <!-- Injectable Treatments -->
-            <div class="treatment-item">
-                <div class="treatment-content">
-                    <div class="treatment-info">
-                        <h3>Injectable Treatments</h3>
-                        <p>Our expertly administered injectable treatments provide natural-looking results to smooth wrinkles, restore volume, and enhance your facial contours. All treatments are performed by certified professionals using premium products.</p>
-                        
-                        <div class="treatment-benefits">
-                            <h4>Treatment Benefits:</h4>
-                            <ul class="benefit-list">
-                                <li>Smooth expression lines and wrinkles</li>
-                                <li>Restore lost facial volume</li>
-                                <li>Enhance lip fullness and definition</li>
-                                <li>Lift and contour facial features</li>
-                                <li>Minimal downtime with lasting results</li>
-                            </ul>
-                        </div>
-
-                        <div class="treatment-pricing">
-                            <h4>Treatment Options & Pricing:</h4>
-                            <div class="price-item">
-                                <span>Botox (per area)</span>
-                                <span class="price">$250-400</span>
-                            </div>
-                            <div class="price-item">
-                                <span>Dermal Fillers (per syringe)</span>
-                                <span class="price">$600-800</span>
-                            </div>
-                            <div class="price-item">
-                                <span>Lip Enhancement</span>
-                                <span class="price">$650</span>
-                            </div>
-                            <div class="price-item">
-                                <span>Full Face Rejuvenation</span>
-                                <span class="price">$1200+</span>
-                            </div>
-                        </div>
-                        
-                        <button class="book-treatment-btn">Schedule Consultation</button>
-                    </div>
-                    <div class="treatment-image">
-                        <img src="/api/placeholder/400/300" alt="Injectable Treatments">
+                <div class="gallery-item">
+                    <div class="gallery-placeholder">
+                        <i class="fas fa-image"></i>
+                        <p>Treatment Room</p>
                     </div>
                 </div>
-            </div>
-
-            <!-- Body Contouring -->
-            <div class="treatment-item">
-                <div class="treatment-content">
-                    <div class="treatment-info">
-                        <h3>Body Contouring & Sculpting</h3>
-                        <p>Transform your silhouette with our advanced non-invasive body contouring treatments. Using cutting-edge technology, we help you achieve your body goals by targeting stubborn fat and tightening skin without surgery or extensive downtime.</p>
-                        
-                        <div class="treatment-benefits">
-                            <h4>Treatment Benefits:</h4>
-                            <ul class="benefit-list">
-                                <li>Reduce stubborn fat deposits</li>
-                                <li>Tighten and tone loose skin</li>
-                                <li>Improve body contours and definition</li>
-                                <li>Non-invasive with no surgery required</li>
-                                <li>Gradual, natural-looking results</li>
-                            </ul>
-                        </div>
-
-                        <div class="treatment-pricing">
-                            <h4>Treatment Options & Pricing:</h4>
-                            <div class="price-item">
-                                <span>CoolSculpting (per cycle)</span>
-                                <span class="price">$750</span>
-                            </div>
-                            <div class="price-item">
-                                <span>Radiofrequency Body Tightening</span>
-                                <span class="price">$300</span>
-                            </div>
-                            <div class="price-item">
-                                <span>Ultrasonic Cavitation</span>
-                                <span class="price">$200</span>
-                            </div>
-                            <div class="price-item">
-                                <span>Package Deals (6 sessions)</span>
-                                <span class="price">$1500+</span>
-                            </div>
-                        </div>
-                        
-                        <button class="book-treatment-btn">Book Body Treatment</button>
-                    </div>
-                    <div class="treatment-image">
-                        <img src="/api/placeholder/400/300" alt="Body Contouring">
+                <div class="gallery-item">
+                    <div class="gallery-placeholder">
+                        <i class="fas fa-image"></i>
+                        <p>Clinic Interior</p>
                     </div>
                 </div>
-            </div>
-
-            <!-- Laser Treatments -->
-            <div class="treatment-item">
-                <div class="treatment-content">
-                    <div class="treatment-info">
-                        <h3>Laser Treatments</h3>
-                        <p>Our state-of-the-art laser technology provides effective solutions for hair removal, skin resurfacing, and pigmentation correction. Experience professional laser treatments in a safe, comfortable environment with stunning results.</p>
-                        
-                        <div class="treatment-benefits">
-                            <h4>Treatment Benefits:</h4>
-                            <ul class="benefit-list">
-                                <li>Permanent hair reduction</li>
-                                <li>Improved skin texture and clarity</li>
-                                <li>Reduced pigmentation and sun damage</li>
-                                <li>Stimulated collagen production</li>
-                                <li>Safe for all skin types</li>
-                            </ul>
-                        </div>
-
-                        <div class="treatment-pricing">
-                            <h4>Treatment Options & Pricing:</h4>
-                            <div class="price-item">
-                                <span>Laser Hair Removal (small area)</span>
-                                <span class="price">$100</span>
-                            </div>
-                            <div class="price-item">
-                                <span>Laser Hair Removal (large area)</span>
-                                <span class="price">$300</span>
-                            </div>
-                            <div class="price-item">
-                                <span>IPL Photo Facial</span>
-                                <span class="price">$250</span>
-                            </div>
-                            <div class="price-item">
-                                <span>Laser Skin Resurfacing</span>
-                                <span class="price">$400</span>
-                            </div>
-                        </div>
-                        
-                        <button class="book-treatment-btn">Book Laser Treatment</button>
-                    </div>
-                    <div class="treatment-image">
-                        <img src="/api/placeholder/400/300" alt="Laser Treatments">
-                    </div>
-                </div>
-            </div>
-
-            <!-- Wellness Therapy -->
-            <div class="treatment-item">
-                <div class="treatment-content">
-                    <div class="treatment-info">
-                        <h3>Wellness & Relaxation Therapy</h3>
-                        <p>Enhance your overall well-being with our holistic wellness treatments. Combining advanced technology with relaxation techniques, these treatments promote healing, reduce stress, and restore your natural balance.</p>
-                        
-                        <div class="treatment-benefits">
-                            <h4>Treatment Benefits:</h4>
-                            <ul class="benefit-list">
-                                <li>Reduced inflammation and healing</li>
-                                <li>Improved circulation and lymphatic drainage</li>
-                                <li>Stress relief and relaxation</li>
-                                <li>Enhanced skin rejuvenation</li>
-                                <li>Boosted energy and vitality</li>
-                            </ul>
-                        </div>
-
-                        <div class="treatment-pricing">
-                            <h4>Treatment Options & Pricing:</h4>
-                            <div class="price-item">
-                                <span>LED Light Therapy</span>
-                                <span class="price">$80</span>
-                            </div>
-                            <div class="price-item">
-                                <span>Lymphatic Drainage Massage</span>
-                                <span class="price">$120</span>
-                            </div>
-                            <div class="price-item">
-                                <span>Oxygen Therapy</span>
-                                <span class="price">$150</span>
-                            </div>
-                            <div class="price-item">
-                                <span>Wellness Package (3 treatments)</span>
-                                <span class="price">$300</span>
-                            </div>
-                        </div>
-                        
-                        <button class="book-treatment-btn">Book Wellness Session</button>
-                    </div>
-                    <div class="treatment-image">
-                        <img src="/api/placeholder/400/300" alt="Wellness Therapy">
-                    </div>
-                </div>
-            </div>
-
-            <!-- Skincare Consultation -->
-            <div class="treatment-item">
-                <div class="treatment-content">
-                    <div class="treatment-info">
-                        <h3>Professional Skincare Consultation</h3>
-                        <p>Receive personalized skincare guidance from our expert aestheticians. We analyze your skin's unique needs and create a customized treatment plan and home care routine to help you achieve and maintain optimal skin health.</p>
-                        
-                        <div class="treatment-benefits">
-                            <h4>Consultation Includes:</h4>
-                            <ul class="benefit-list">
-                                <li>Comprehensive skin analysis</li>
-                                <li>Personalized treatment recommendations</li>
-                                <li>Custom home skincare routine</li>
-                                <li>Product recommendations and education</li>
-                                <li>Follow-up support and adjustments</li>
-                            </ul>
-                        </div>
-
-                        <div class="treatment-pricing">
-                            <h4>Consultation Options & Pricing:</h4>
-                            <div class="price-item">
-                                <span>Initial Skin Consultation</span>
-                                <span class="price">$75</span>
-                            </div>
-                            <div class="price-item">
-                                <span>Comprehensive Skin Analysis</span>
-                                <span class="price">$125</span>
-                            </div>
-                            <div class="price-item">
-                                <span>Follow-up Consultation</span>
-                                <span class="price">$50</span>
-                            </div>
-                            <div class="price-item">
-                                <span>Virtual Consultation</span>
-                                <span class="price">$60</span>
-                            </div>
-                        </div>
-                        
-                        <button class="book-treatment-btn">Schedule Consultation</button>
-                    </div>
-                    <div class="treatment-image">
-                        <img src="/api/placeholder/400/300" alt="Skincare Consultation">
+                <div class="gallery-item">
+                    <div class="gallery-placeholder">
+                        <i class="fas fa-image"></i>
+                        <p>Results Gallery</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-
-    <!-- Booking Modal -->
-    <div id="bookingModal" class="booking-modal">
-        <div class="booking-content">
-            <span class="booking-close">&times;</span>
-            
-            <div class="booking-header">
-                <h2>Book Your Appointment</h2>
-                <p>Schedule your personalized beauty treatment with us</p>
-            </div>
-
-            <div class="booking-steps">
-                <div class="step active" data-step="1">1</div>
-                <div class="step" data-step="2">2</div>
-                <div class="step" data-step="3">3</div>
-            </div>
-
-            <!-- Step 1: Service Selection -->
-            <div class="booking-step active" id="step1">
-                <h3 style="text-align: center; color: #8b7355; margin-bottom: 1.5rem;">Select Your Treatment</h3>
-                <div class="service-selection">
-                    <div class="service-option" data-service="facial" data-price="150" data-duration="60">
-                        <h4>Facial Treatment</h4>
-                        <p>Customized facial therapy</p>
-                        <p class="price">From $120</p>
-                    </div>
-                    <div class="service-option" data-service="injectable" data-price="300" data-duration="30">
-                        <h4>Injectable Treatment</h4>
-                        <p>Botox & dermal fillers</p>
-                        <p class="price">From $250</p>
-                    </div>
-                    <div class="service-option" data-service="body" data-price="400" data-duration="90">
-                        <h4>Body Contouring</h4>
-                        <p>Non-invasive body sculpting</p>
-                        <p class="price">From $300</p>
-                    </div>
-                    <div class="service-option" data-service="laser" data-price="200" data-duration="45">
-                        <h4>Laser Treatment</h4>
-                        <p>Hair removal & skin resurfacing</p>
-                        <p class="price">From $100</p>
-                    </div>
-                    <div class="service-option" data-service="wellness" data-price="120" data-duration="60">
-                        <h4>Wellness Therapy</h4>
-                        <p>LED therapy & wellness treatments</p>
-                        <p class="price">From $80</p>
-                    </div>
-                    <div class="service-option" data-service="consultation" data-price="75" data-duration="30">
-                        <h4>Consultation</h4>
-                        <p>Skincare analysis & planning</p>
-                        <p class="price">From $75</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Step 2: Date & Time Selection -->
-            <div class="booking-step" id="step2">
-                <h3 style="text-align: center; color: #8b7355; margin-bottom: 1.5rem;">Choose Date & Time</h3>
-                <div class="datetime-selection">
-                    <div class="date-picker">
-                        <h4>Select Date</h4>
-                        <div class="calendar" id="calendar">
-                            <!-- Calendar will be generated by JavaScript -->
-                        </div>
-                    </div>
-                    <div class="time-picker">
-                        <h4>Available Times</h4>
-                        <div class="time-slots" id="timeSlots">
-                            <!-- Time slots will be generated by JavaScript -->
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Step 3: Personal Information -->
-            <div class="booking-step" id="step3">
-                <h3 style="text-align: center; color: #8b7355; margin-bottom: 1.5rem;">Your Information</h3>
-                
-                <div class="booking-summary">
-                    <h4>Appointment Summary</h4>
-                    <div class="summary-item">
-                        <span>Service: <strong id="summaryService">-</strong></span>
-                    </div>
-                    <div class="summary-item">
-                        <span>Date: <strong id="summaryDate">-</strong></span>
-                    </div>
-                    <div class="summary-item">
-                        <span>Time: <strong id="summaryTime">-</strong></span>
-                    </div>
-                    <div class="summary-item">
-                        <span>Duration: <strong id="summaryDuration">-</strong></span>
-                    </div>
-                    <div class="summary-item">
-                        <span>Price: <strong id="summaryPrice">-</strong></span>
-                    </div>
-                </div>
-
-                <form class="booking-form" id="bookingForm">
-                    <div class="form-group">
-                        <label for="bookingName">Full Name *</label>
-                        <input type="text" id="bookingName" name="name" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="bookingEmail">Email Address *</label>
-                        <input type="email" id="bookingEmail" name="email" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="bookingPhone">Phone Number *</label>
-                        <input type="tel" id="bookingPhone" name="phone" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="bookingAge">Age</label>
-                        <select id="bookingAge" name="age">
-                            <option value="">Select Age Range</option>
-                            <option value="18-25">18-25</option>
-                            <option value="26-35">26-35</option>
-                            <option value="36-45">36-45</option>
-                            <option value="46-55">46-55</option>
-                            <option value="56+">56+</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="bookingNotes">Special Requests or Medical Notes</label>
-                        <textarea id="bookingNotes" name="notes" rows="3" placeholder="Any allergies, skin conditions, or special requests..."></textarea>
-                    </div>
-                </form>
-            </div>
-
-            <div class="booking-buttons">
-                <button type="button" class="btn-secondary" id="prevBtn" style="display: none;">Previous</button>
-                <button type="button" class="btn-primary" id="nextBtn">Next</button>
-                <button type="submit" class="btn-primary" id="confirmBtn" style="display: none;">Confirm Booking</button>
-            </div>
-        </div>
-    </div>
 
     <!-- Testimonials Section -->
     <section class="testimonials">
         <div class="container">
-            <h2>What Our Clients Say</h2>
-            <div class="testimonial-card">
-                <p>"The team at Elegant Aesthetics transformed not just my appearance, but my confidence. Their attention to detail and professional expertise is unmatched. I always leave feeling like the best version of myself."</p>
-                <div class="testimonial-author">- Sarah M.</div>
+            <div class="section-header">
+                <h2>What Our Clients Say</h2>
+                <p>Real experiences from satisfied clients</p>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p>"Amazing results! The team at Elegant Aesthetics is professional and caring. I'm so happy with my treatment."</p>
+                    <div class="client-info">
+                        <strong>Sarah M.</strong>
+                        <span>Anti-wrinkle treatment</span>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p>"The laser hair removal treatment exceeded my expectations. Clean clinic, friendly staff, excellent results."</p>
+                    <div class="client-info">
+                        <strong>Emma L.</strong>
+                        <span>Laser hair removal</span>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p>"Professional service from start to finish. The consultation was thorough and the results speak for themselves."</p>
+                    <div class="client-info">
+                        <strong>Lisa K.</strong>
+                        <span>Dermal fillers</span>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Contact Section -->
-    <section class="contact" id="contact">
+    <section id="contact" class="contact">
         <div class="container">
+            <div class="section-header">
+                <h2>Contact Us</h2>
+                <p>Book your consultation today</p>
+            </div>
             <div class="contact-content">
                 <div class="contact-info">
-                    <h2>Get In Touch</h2>
-                    <p><strong>Address:</strong><br>123 Beauty Boulevard<br>Elegant City, EC 12345</p>
-                    <p><strong>Phone:</strong><br>(555) 123-4567</p>
-                    <p><strong>Email:</strong><br>hello@elegantaesthetics.com</p>
-                    <p><strong>Hours:</strong><br>
-                    Monday - Friday: 9:00 AM - 7:00 PM<br>
-                    Saturday: 9:00 AM - 5:00 PM<br>
-                    Sunday: Closed</p>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h4>Location</h4>
+                            <p>123 Beauty Street<br>London, UK</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <h4>Phone</h4>
+                            <p>+44 (0) 20 1234 5678</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h4>Email</h4>
+                            <p>info@elegantaesthetics.co.uk</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-clock"></i>
+                        <div>
+                            <h4>Opening Hours</h4>
+                            <p>Mon - Fri: 9:00 AM - 7:00 PM<br>
+                               Sat: 9:00 AM - 5:00 PM<br>
+                               Sun: Closed</p>
+                        </div>
+                    </div>
                 </div>
                 <div class="contact-form">
-                    <form>
+                    <form id="contactForm">
                         <div class="form-group">
-                            <label for="name">Full Name</label>
-                            <input type="text" id="name" name="name" required>
+                            <input type="text" id="name" name="name" placeholder="Your Name" required>
                         </div>
                         <div class="form-group">
-                            <label for="email">Email Address</label>
-                            <input type="email" id="email" name="email" required>
+                            <input type="email" id="email" name="email" placeholder="Your Email" required>
                         </div>
                         <div class="form-group">
-                            <label for="phone">Phone Number</label>
-                            <input type="tel" id="phone" name="phone">
+                            <input type="tel" id="phone" name="phone" placeholder="Your Phone">
                         </div>
                         <div class="form-group">
-                            <label for="service">Service Interest</label>
-                            <input type="text" id="service" name="service" placeholder="Which service interests you?">
+                            <select id="service" name="service" required>
+                                <option value="">Select a Service</option>
+                                <option value="anti-wrinkle">Anti-Wrinkle Treatments</option>
+                                <option value="laser-hair">Laser Hair Removal</option>
+                                <option value="skin-rejuvenation">Skin Rejuvenation</option>
+                                <option value="body-contouring">Body Contouring</option>
+                                <option value="lip-eye">Lip & Eye Enhancement</option>
+                                <option value="wellness">Wellness Treatments</option>
+                                <option value="consultation">General Consultation</option>
+                            </select>
                         </div>
                         <div class="form-group">
-                            <label for="message">Message</label>
-                            <textarea id="message" name="message" placeholder="Tell us about your aesthetic goals..."></textarea>
+                            <textarea id="message" name="message" rows="4" placeholder="Your Message"></textarea>
                         </div>
-                        <button type="submit" class="submit-btn">Send Message</button>
+                        <button type="submit" class="btn btn-primary">Send Message</button>
                     </form>
                 </div>
             </div>
@@ -1435,323 +338,67 @@
     </section>
 
     <!-- Footer -->
-    <footer>
+    <footer class="footer">
         <div class="container">
-            <p>&copy; 2025 Elegant Aesthetics. All rights reserved.</p>
-            <div class="social-links">
-                <a href="#">Facebook</a>
-                <a href="#">Instagram</a>
-                <a href="#">Twitter</a>
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Elegant Aesthetics</h3>
+                    <p>Your premier destination for advanced beauty treatments and aesthetic care.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#Treatments">Treatments</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Treatments</h4>
+                    <ul>
+                        <li><a href="#Treatments">Anti-Wrinkle Treatments</a></li>
+                        <li><a href="#Treatments">Laser Hair Removal</a></li>
+                        <li><a href="#Treatments">Skin Rejuvenation</a></li>
+                        <li><a href="#Treatments">Body Contouring</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact Info</h4>
+                    <p><i class="fas fa-map-marker-alt"></i> 123 Beauty Street, London, UK</p>
+                    <p><i class="fas fa-phone"></i> +44 (0) 20 1234 5678</p>
+                    <p><i class="fas fa-envelope"></i> info@elegantaesthetics.co.uk</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Elegant Aesthetics. All rights reserved.</p>
             </div>
         </div>
     </footer>
 
     <script>
-        // Booking System
-        class BookingSystem {
-            constructor() {
-                this.currentStep = 1;
-                this.selectedService = null;
-                this.selectedDate = null;
-                this.selectedTime = null;
-                this.bookedSlots = new Set(); // Simulate booked appointments
-                
-                this.initializeBookingSystem();
-                this.generateCalendar();
-                this.simulateBookedSlots();
-            }
+        // Mobile menu toggle
+        const hamburger = document.querySelector('.hamburger');
+        const navMenu = document.querySelector('.nav-menu');
 
-            initializeBookingSystem() {
-                const modal = document.getElementById('bookingModal');
-                const closeBtn = document.querySelector('.booking-close');
-                const nextBtn = document.getElementById('nextBtn');
-                const prevBtn = document.getElementById('prevBtn');
-                const confirmBtn = document.getElementById('confirmBtn');
-
-                // Open modal when booking buttons are clicked
-                document.querySelectorAll('.book-btn, .cta-btn, .book-treatment-btn').forEach(btn => {
-                    btn.addEventListener('click', (e) => {
-                        e.preventDefault();
-                        modal.classList.add('active');
-                        document.body.style.overflow = 'hidden';
-                    });
-                });
-
-                // Close modal
-                closeBtn.addEventListener('click', () => this.closeModal());
-                modal.addEventListener('click', (e) => {
-                    if (e.target === modal) this.closeModal();
-                });
-
-                // Navigation
-                nextBtn.addEventListener('click', () => this.nextStep());
-                prevBtn.addEventListener('click', () => this.prevStep());
-                confirmBtn.addEventListener('click', () => this.confirmBooking());
-
-                // Service selection
-                document.querySelectorAll('.service-option').forEach(option => {
-                    option.addEventListener('click', () => this.selectService(option));
-                });
-            }
-
-            closeModal() {
-                const modal = document.getElementById('bookingModal');
-                modal.classList.remove('active');
-                document.body.style.overflow = 'auto';
-                this.resetBooking();
-            }
-
-            resetBooking() {
-                this.currentStep = 1;
-                this.selectedService = null;
-                this.selectedDate = null;
-                this.selectedTime = null;
-                this.updateStepDisplay();
-                document.querySelectorAll('.service-option').forEach(opt => opt.classList.remove('selected'));
-                document.querySelectorAll('.calendar-day').forEach(day => day.classList.remove('selected'));
-                document.querySelectorAll('.time-slot').forEach(slot => slot.classList.remove('selected'));
-            }
-
-            selectService(option) {
-                document.querySelectorAll('.service-option').forEach(opt => opt.classList.remove('selected'));
-                option.classList.add('selected');
-                
-                this.selectedService = {
-                    type: option.dataset.service,
-                    name: option.querySelector('h4').textContent,
-                    price: parseInt(option.dataset.price),
-                    duration: parseInt(option.dataset.duration)
-                };
-            }
-
-            nextStep() {
-                if (this.validateStep()) {
-                    this.currentStep++;
-                    if (this.currentStep === 2) {
-                        this.generateTimeSlots();
-                    } else if (this.currentStep === 3) {
-                        this.updateSummary();
-                    }
-                    this.updateStepDisplay();
-                }
-            }
-
-            prevStep() {
-                if (this.currentStep > 1) {
-                    this.currentStep--;
-                    this.updateStepDisplay();
-                }
-            }
-
-            validateStep() {
-                switch (this.currentStep) {
-                    case 1:
-                        if (!this.selectedService) {
-                            alert('Please select a treatment.');
-                            return false;
-                        }
-                        return true;
-                    case 2:
-                        if (!this.selectedDate || !this.selectedTime) {
-                            alert('Please select both date and time.');
-                            return false;
-                        }
-                        return true;
-                    case 3:
-                        const form = document.getElementById('bookingForm');
-                        const requiredFields = form.querySelectorAll('[required]');
-                        for (let field of requiredFields) {
-                            if (!field.value.trim()) {
-                                alert(`Please fill in ${field.previousElementSibling.textContent.replace(' *', '')}`);
-                                field.focus();
-                                return false;
-                            }
-                        }
-                        return true;
-                    default:
-                        return true;
-                }
-            }
-
-            updateStepDisplay() {
-                // Update step indicators
-                document.querySelectorAll('.step').forEach((step, index) => {
-                    step.classList.remove('active', 'completed');
-                    if (index + 1 < this.currentStep) {
-                        step.classList.add('completed');
-                    } else if (index + 1 === this.currentStep) {
-                        step.classList.add('active');
-                    }
-                });
-
-                // Update step content
-                document.querySelectorAll('.booking-step').forEach((step, index) => {
-                    step.classList.toggle('active', index + 1 === this.currentStep);
-                });
-
-                // Update buttons
-                const prevBtn = document.getElementById('prevBtn');
-                const nextBtn = document.getElementById('nextBtn');
-                const confirmBtn = document.getElementById('confirmBtn');
-
-                prevBtn.style.display = this.currentStep > 1 ? 'block' : 'none';
-                nextBtn.style.display = this.currentStep < 3 ? 'block' : 'none';
-                confirmBtn.style.display = this.currentStep === 3 ? 'block' : 'none';
-            }
-
-            generateCalendar() {
-                const calendar = document.getElementById('calendar');
-                const today = new Date();
-                const currentMonth = today.getMonth();
-                const currentYear = today.getFullYear();
-
-                // Generate next 30 days
-                for (let i = 0; i < 30; i++) {
-                    const date = new Date(today);
-                    date.setDate(today.getDate() + i);
-                    
-                    const dayElement = document.createElement('div');
-                    dayElement.className = 'calendar-day';
-                    dayElement.textContent = date.getDate();
-                    dayElement.dataset.date = date.toISOString().split('T')[0];
-                    
-                    // Disable Sundays and past dates
-                    if (date.getDay() === 0 || i === 0) {
-                        dayElement.classList.add('disabled');
-                    } else {
-                        dayElement.addEventListener('click', () => this.selectDate(dayElement, date));
-                    }
-                    
-                    calendar.appendChild(dayElement);
-                }
-            }
-
-            selectDate(element, date) {
-                if (element.classList.contains('disabled')) return;
-                
-                document.querySelectorAll('.calendar-day').forEach(day => day.classList.remove('selected'));
-                element.classList.add('selected');
-                
-                this.selectedDate = date;
-                this.generateTimeSlots();
-            }
-
-            generateTimeSlots() {
-                const timeSlotsContainer = document.getElementById('timeSlots');
-                timeSlotsContainer.innerHTML = '';
-
-                if (!this.selectedDate) return;
-
-                const timeSlots = [
-                    '9:00 AM', '9:30 AM', '10:00 AM', '10:30 AM', '11:00 AM', '11:30 AM',
-                    '1:00 PM', '1:30 PM', '2:00 PM', '2:30 PM', '3:00 PM', '3:30 PM',
-                    '4:00 PM', '4:30 PM', '5:00 PM', '5:30 PM', '6:00 PM'
-                ];
-
-                timeSlots.forEach(time => {
-                    const slotElement = document.createElement('div');
-                    slotElement.className = 'time-slot';
-                    slotElement.textContent = time;
-                    slotElement.dataset.time = time;
-                    
-                    const slotKey = `${this.selectedDate.toISOString().split('T')[0]}-${time}`;
-                    
-                    if (this.bookedSlots.has(slotKey)) {
-                        slotElement.classList.add('unavailable');
-                        slotElement.textContent += ' (Booked)';
-                    } else {
-                        slotElement.addEventListener('click', () => this.selectTime(slotElement, time));
-                    }
-                    
-                    timeSlotsContainer.appendChild(slotElement);
-                });
-            }
-
-            selectTime(element, time) {
-                if (element.classList.contains('unavailable')) return;
-                
-                document.querySelectorAll('.time-slot').forEach(slot => slot.classList.remove('selected'));
-                element.classList.add('selected');
-                
-                this.selectedTime = time;
-            }
-
-            updateSummary() {
-                document.getElementById('summaryService').textContent = this.selectedService.name;
-                document.getElementById('summaryDate').textContent = this.selectedDate.toLocaleDateString();
-                document.getElementById('summaryTime').textContent = this.selectedTime;
-                document.getElementById('summaryDuration').textContent = `${this.selectedService.duration} minutes`;
-                document.getElementById('summaryPrice').textContent = `${this.selectedService.price}`;
-            }
-
-            simulateBookedSlots() {
-                // Simulate some booked appointments
-                const today = new Date();
-                for (let i = 1; i < 30; i++) {
-                    const date = new Date(today);
-                    date.setDate(today.getDate() + i);
-                    const dateStr = date.toISOString().split('T')[0];
-                    
-                    // Randomly book some slots
-                    if (Math.random() > 0.7) {
-                        const times = ['10:00 AM', '2:00 PM', '4:00 PM'];
-                        const randomTime = times[Math.floor(Math.random() * times.length)];
-                        this.bookedSlots.add(`${dateStr}-${randomTime}`);
-                    }
-                }
-            }
-
-            confirmBooking() {
-                if (!this.validateStep()) return;
-
-                const formData = new FormData(document.getElementById('bookingForm'));
-                const bookingData = {
-                    service: this.selectedService,
-                    date: this.selectedDate.toISOString().split('T')[0],
-                    time: this.selectedTime,
-                    customer: {
-                        name: formData.get('name'),
-                        email: formData.get('email'),
-                        phone: formData.get('phone'),
-                        age: formData.get('age'),
-                        notes: formData.get('notes')
-                    }
-                };
-
-                // Simulate booking confirmation
-                this.processBooking(bookingData);
-            }
-
-            processBooking(bookingData) {
-                // Add to booked slots
-                const slotKey = `${bookingData.date}-${bookingData.time}`;
-                this.bookedSlots.add(slotKey);
-
-                // Show confirmation
-                alert(`Booking Confirmed!
-
-Service: ${bookingData.service.name}
-Date: ${new Date(bookingData.date).toLocaleDateString()}
-Time: ${bookingData.time}
-Duration: ${bookingData.service.duration} minutes
-Price: ${bookingData.service.price}
-
-Customer: ${bookingData.customer.name}
-Email: ${bookingData.customer.email}
-Phone: ${bookingData.customer.phone}
-
-A confirmation email will be sent to you shortly. Please arrive 15 minutes early for your appointment.`);
-
-                this.closeModal();
-            }
-        }
-
-        // Initialize booking system when page loads
-        document.addEventListener('DOMContentLoaded', () => {
-            new BookingSystem();
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navMenu.classList.toggle('active');
         });
 
-        // Smooth scrolling for navigation links
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-link').forEach(n => n.addEventListener('click', () => {
+            hamburger.classList.remove('active');
+            navMenu.classList.remove('active');
+        }));
+
+        // Smooth scrolling for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -1765,28 +412,21 @@ A confirmation email will be sent to you shortly. Please arrive 15 minutes early
             });
         });
 
-        // Header background on scroll
-        window.addEventListener('scroll', () => {
-            const header = document.querySelector('header');
-            if (window.scrollY > 100) {
-                header.style.background = 'rgba(255, 255, 255, 0.98)';
-            } else {
-                header.style.background = 'rgba(255, 255, 255, 0.95)';
-            }
-        });
-
-        // Form submission
-        document.querySelector('.contact-form form').addEventListener('submit', function(e) {
+        // Contact form handling
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
             e.preventDefault();
-            alert('Thank you for your message! We will contact you soon to schedule your consultation.');
+            alert('Thank you for your message! We will get back to you soon.');
             this.reset();
         });
-    </script>
-        document.querySelectorAll('.book-btn, .cta-btn, .book-treatment-btn').forEach(btn => {
-            btn.addEventListener('click', (e) => {
-                e.preventDefault();
-                // This is now handled by the BookingSystem class
-            });
+
+        // Navbar background on scroll
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
         });
     </script>
 </body>
