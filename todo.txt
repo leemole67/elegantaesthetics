@@ -5,3 +5,6 @@ add the website_logo.png from the images folder to the navbar section before the
 replace the hero-placeholder with the anti_wrinkle_image_c.png from the images folder
 
 below each treatment add a drop down arrow with the words more information to show a bulleted list of information about each treatment
+
+BLUE - #002060
+GOLD - #B47C28
