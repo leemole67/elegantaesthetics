@@ -1,0 +1,7 @@
+I want to create a book an appointment, it will be a pop-out feature that will ask customer their name, phone number, email address. next step. what service do they want? there will be the following treatments, anti-wrinkle treatment, lemon bottle fat reducing injections, prx skin peel, hayfever injections all will have costs shown, next step, date/time, confirm booking.
+
+add the website_logo.png from the images folder to the navbar section before the words Elegant Aesthetics and make it the same size as the font
+
+replace the hero-placeholder with the anti_wrinkle_image_c.png from the images folder
+
+below each treatment add a drop down arrow with the words more information to show a bulleted list of information about each treatment
