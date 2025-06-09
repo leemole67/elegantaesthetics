@@ -365,6 +365,11 @@
     </footer>
 
     <script>
+        // Initialize EmailJS
+        (function() {
+            emailjs.init("OyFN9t0idZ-kiOWFn");
+        })();
+
         // Mobile menu toggle
         const hamburger = document.querySelector('.hamburger');
         const navMenu = document.querySelector('.nav-menu');
@@ -394,11 +399,42 @@
             });
         });
 
-        // Contact form handling
+        // Contact form handling with EmailJS
         document.getElementById('contactForm').addEventListener('submit', function(e) {
             e.preventDefault();
-            alert('Thank you for your message! We will get back to you soon.');
-            this.reset();
+            
+            // Get form data
+            const formData = new FormData(this);
+            const templateParams = {
+                from_name: formData.get('name'),
+                from_email: formData.get('email'),
+                phone: formData.get('phone'),
+                service: formData.get('service'),
+                message: formData.get('message')
+            };
+
+            // Show loading state
+            const submitBtn = this.querySelector('button[type="submit"]');
+            const originalText = submitBtn.textContent;
+            submitBtn.textContent = 'Sending...';
+            submitBtn.disabled = true;
+
+            // Send email using EmailJS
+            emailjs.send('service_8gsetg8', 'template_yfevmq7', templateParams)
+                .then(function(response) {
+                    console.log('Email sent successfully:', response);
+                    alert('Thank you for your message! We will get back to you soon.');
+                    document.getElementById('contactForm').reset();
+                })
+                .catch(function(error) {
+                    console.error('Email sending failed:', error);
+                    alert('Sorry, there was an error sending your message. Please try again or contact us directly.');
+                })
+                .finally(function() {
+                    // Reset button state
+                    submitBtn.textContent = originalText;
+                    submitBtn.disabled = false;
+                });
         });
 
         // Navbar background on scroll
