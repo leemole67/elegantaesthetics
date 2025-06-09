@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Consultation Request - Elegant Aesthetics</title>
+    <style>
+        /* Reset and base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #2d3748;
+            background-color: #faf9f7;
+            margin: 0;
+            padding: 20px;
+        }
+        
+        .email-container {
+            max-width: 650px;
+            margin: 0 auto;
+            background: #ffffff;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(218, 165, 32, 0.15);
+            border: 1px solid rgba(218, 165, 32, 0.2);
+        }
+        
+        /* Header */
+        .email-header {
+            background: linear-gradient(135deg, #b8860b 0%, #daa520 100%);
+            padding: 40px 30px;
+            text-align: center;
+            color: #ffffff;
+        }
+        
+        .logo {
+            font-size: 2.2rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+            letter-spacing: -0.5px;
+        }
+        
+        .tagline {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            font-weight: 300;
+        }
+        
+        /* Content */
+        .email-content {
+            padding: 40px 30px;
+        }
+        
+        .greeting {
+            font-size: 1.3rem;
+            color: #2d3748;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+        
+        .intro-text {
+            font-size: 1.1rem;
+            color: #4a5568;
+            margin-bottom: 30px;
+            line-height: 1.7;
+        }
+        
+        /* Client details section */
+        .details-section {
+            background: linear-gradient(135deg, #f7f2f0 0%, #f1ebe8 100%);
+            border-radius: 15px;
+            padding: 25px;
+            margin: 25px 0;
+            border: 1px solid rgba(218, 165, 32, 0.2);
+        }
+        
+        .section-title {
+            color: #b8860b;
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid rgba(218, 165, 32, 0.3);
+        }
+        
+        .detail-row {
+            display: flex;
+            margin-bottom: 15px;
+            align-items: flex-start;
+        }
+        
+        .detail-row:last-child {
+            margin-bottom: 0;
+        }
+        
+        .detail-label {
+            font-weight: 600;
+            color: #2d3748;
+            min-width: 120px;
+            margin-right: 15px;
+        }
+        
+        .detail-value {
+            color: #4a5568;
+            flex: 1;
+            word-wrap: break-word;
+        }
+        
+        /* Service highlight */
+        .service-highlight {
+            background: linear-gradient(135deg, rgba(218, 165, 32, 0.1), rgba(184, 134, 11, 0.05));
+            border: 2px solid rgba(218, 165, 32, 0.3);
+            border-radius: 12px;
+            padding: 20px;
+            margin: 20px 0;
+            text-align: center;
+        }
+        
+        .service-highlight .service-name {
+            color: #b8860b;
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+        
+        .service-highlight .service-text {
+            color: #4a5568;
+            font-size: 1rem;
+        }
+        
+        /* Message section */
+        .message-section {
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 15px;
+            padding: 25px;
+            margin: 25px 0;
+            border: 1px solid rgba(218, 165, 32, 0.2);
+        }
+        
+        .message-content {
+            color: #4a5568;
+            font-size: 1.05rem;
+            line-height: 1.7;
+            font-style: italic;
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 4px solid #b8860b;
+        }
+        
+        /* Action section */
+        .action-section {
+            background: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);
+            color: #ffffff;
+            padding: 30px;
+            text-align: center;
+            border-radius: 15px;
+            margin: 30px 0;
+        }
+        
+        .action-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+        
+        .action-text {
+            font-size: 1.05rem;
+            opacity: 0.9;
+            margin-bottom: 20px;
+        }
+        
+        .contact-info {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        
+        .contact-item {
+            text-align: center;
+            flex: 1;
+            min-width: 150px;
+        }
+        
+        .contact-item .icon {
+            font-size: 1.5rem;
+            margin-bottom: 8px;
+            color: #daa520;
+        }
+        
+        .contact-item .value {
+            font-size: 0.95rem;
+            opacity: 0.9;
+        }
+        
+        /* Footer */
+        .email-footer {
+            background: #f7f2f0;
+            padding: 30px;
+            text-align: center;
+            border-top: 1px solid rgba(218, 165, 32, 0.2);
+        }
+        
+        .footer-text {
+            color: #718096;
+            font-size: 0.95rem;
+            margin-bottom: 15px;
+        }
+        
+        .business-info {
+            color: #4a5568;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+        
+        /* Responsive design */
+        @media (max-width: 600px) {
+            body {
+                padding: 10px;
+            }
+            
+            .email-header,
+            .email-content,
+            .action-section,
+            .email-footer {
+                padding: 25px 20px;
+            }
+            
+            .details-section,
+            .message-section {
+                padding: 20px;
+            }
+            
+            .detail-row {
+                flex-direction: column;
+                gap: 5px;
+            }
+            
+            .detail-label {
+                min-width: auto;
+                margin-right: 0;
+            }
+            
+            .contact-info {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .logo {
+                font-size: 1.8rem;
+            }
+        }
+        
+        /* Print styles */
+        @media print {
+            body {
+                background: #ffffff;
+                padding: 0;
+            }
+            
+            .email-container {
+                box-shadow: none;
+                border: 1px solid #ddd;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="email-container">
+        <!-- Header -->
+        <div class="email-header">
+            <div class="logo">Elegant Aesthetics</div>
+            <div class="tagline">Premium Beauty Treatments</div>
+        </div>
+        
+        <!-- Main Content -->
+        <div class="email-content">
+            <div class="greeting">New Consultation Request</div>
+            
+            <div class="intro-text">
+                You have received a new consultation request through your website. Please find the client details below and respond promptly to provide exceptional service.
+            </div>
+            
+            <!-- Client Details -->
+            <div class="details-section">
+                <div class="section-title">Client Information</div>
+                
+                <div class="detail-row">
+                    <div class="detail-label">Name:</div>
+                    <div class="detail-value">{{from_name}}</div>
+                </div>
+                
+                <div class="detail-row">
+                    <div class="detail-label">Email:</div>
+                    <div class="detail-value">{{reply_to}}</div>
+                </div>
+                
+                <div class="detail-row">
+                    <div class="detail-label">Phone:</div>
+                    <div class="detail-value">{{phone}}</div>
+                </div>
+                
+                <div class="detail-row">
+                    <div class="detail-label">Date Submitted:</div>
+                    <div class="detail-value">{{submission_date}}</div>
+                </div>
+            </div>
+            
+            <!-- Service Interest -->
+            <div class="service-highlight">
+                <div class="service-name">{{service}}</div>
+                <div class="service-text">Interested Treatment</div>
+            </div>
+            
+            <!-- Message -->
+            <div class="message-section">
+                <div class="section-title">Client Message</div>
+                <div class="message-content">
+                    {{message}}
+                </div>
+            </div>
+            
+            <!-- Action Required -->
+            <div class="action-section">
+                <div class="action-title">Next Steps</div>
+                <div class="action-text">
+                    Please contact this client within 24 hours to schedule their consultation and discuss their treatment options.
+                </div>
+                
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="icon">📧</div>
+                        <div class="value">Reply to Email</div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="icon">📞</div>
+                        <div class="value">Call Client</div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="icon">📅</div>
+                        <div class="value">Schedule Consultation</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Footer -->
+        <div class="email-footer">
+            <div class="footer-text">
+                This email was generated automatically from your website contact form.
+            </div>
+            <div class="business-info">
+                <strong>Elegant Aesthetics</strong><br>
+                Inside Top Knotts Salon, 8 Gossops Green Parade<br>
+                Crawley, West Sussex, RH11 8HH<br>
+                📞 +44 (0) 20 1234 5678 | 📧 info@elegantaesthetics.co.uk
+            </div>
+        </div>
+    </div>
+</body>
+</html>
