@@ -299,7 +299,7 @@
                 
                 <div class="detail-row">
                     <div class="detail-label">Email:</div>
-                    <div class="detail-value">{{reply_to}}</div>
+                    <div class="detail-value">{{from_email}}</div>
                 </div>
                 
                 <div class="detail-row">
